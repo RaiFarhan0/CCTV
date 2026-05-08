@@ -10,4 +10,15 @@ Werkzeug appears to be used in a production deployment. Consider switching to a 
 Werkzeug appears to be used in a production deployment. Consider switching to a production web server instead.
  * Debugger is active!
  * Debugger PIN: 631-326-424
-127.0.0.1 - - [08/May/2026 13:37:28] "POST /upload HTTP/1.1" 200 -
+127.0.0.1 - - [08/May/2026 15:39:31] "GET /status HTTP/1.1" 200 -
+127.0.0.1 - - [08/May/2026 15:42:16] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/May/2026 15:42:17] "GET /css/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/May/2026 15:42:17] "GET /js/videoPlayer.js HTTP/1.1" 200 -
+127.0.0.1 - - [08/May/2026 15:42:17] "GET /js/alertPanel.js HTTP/1.1" 200 -
+127.0.0.1 - - [08/May/2026 15:42:17] "GET /js/main.js HTTP/1.1" 200 -
+127.0.0.1 - - [08/May/2026 15:42:17] "GET /socket.io/?EIO=4&transport=polling&t=Pu8GFrn HTTP/1.1" 200 -
+127.0.0.1 - - [08/May/2026 15:42:17] "POST /socket.io/?EIO=4&transport=polling&t=Pu8GFsG&sid=L4xDt8aA3Jg5igunAAAA HTTP/1.1" 200 -
+127.0.0.1 - - [08/May/2026 15:42:17] "GET /socket.io/?EIO=4&transport=polling&t=Pu8GFt0&sid=L4xDt8aA3Jg5igunAAAA HTTP/1.1" 200 -
+127.0.0.1 - - [08/May/2026 15:42:17] "GET /status HTTP/1.1" 200 -
+127.0.0.1 - - [08/May/2026 15:42:17] "GET /socket.io/?EIO=4&transport=polling&t=Pu8GFtE&sid=L4xDt8aA3Jg5igunAAAA HTTP/1.1" 200 -
+127.0.0.1 - - [08/May/2026 15:42:20] "GET /socket.io/?EIO=4&transport=websocket&sid=L4xDt8aA3Jg5igunAAAA HTTP/1.1" 200 -
