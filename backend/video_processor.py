@@ -2,9 +2,9 @@ import cv2
 import os
 import base64
 import numpy as np
-from backend.model_loader import load_model
-from backend.detector import AnomalyDetector
-from backend.alert_generator import generate_alert
+from model_loader import load_model
+from detector import AnomalyDetector
+from alert_generator import generate_alert
 
 def process_video(video_path, socketio=None):
     """

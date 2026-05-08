@@ -7,8 +7,8 @@ from dotenv import load_dotenv
 from werkzeug.utils import secure_filename
 import traceback
 
-from backend.video_processor import process_video
-from backend.alert_generator import get_all_alerts
+from video_processor import process_video
+from alert_generator import get_all_alerts
 
 # Load environment variables
 load_dotenv()
