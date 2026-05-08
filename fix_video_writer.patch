@@ -1,0 +1,12 @@
+--- backend/video_processor.py
++++ backend/video_processor.py
+@@ -115,7 +115,8 @@
+             socketio.emit('processing_progress', {'progress': progress, 'filename': filename})
+
+     cap.release()
+-    out.write(frame) # just in case
++    if frame is not None:
++        out.write(frame) # just in case
+     out.release()
+
+     if socketio:
