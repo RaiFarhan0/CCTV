@@ -1,0 +1,11 @@
+flask
+flask-cors
+flask-socketio
+opencv-python
+ultralytics
+numpy
+python-dotenv
+Pillow
+eventlet
+torch
+torchvision

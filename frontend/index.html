@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SENTINEL AI | CCTV Anomaly Detection</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Socket.IO -->
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            SENTINEL AI <span class="blink-dot"></span>
+        </div>
+        <div class="status-pill" id="system-status">Idle</div>
+        <div class="clock" id="live-clock">00:00:00</div>
+    </header>
+
+    <main class="main-grid">
+        <!-- LEFT SIDEBAR -->
+        <aside class="sidebar-left">
+            <div class="upload-zone" id="drop-zone">
+                <p>Drag & Drop CCTV Footage</p>
+                <p class="muted">MP4, AVI, MOV</p>
+                <input type="file" id="file-input" accept=".mp4,.avi,.mov" hidden>
+                <button class="btn-primary" id="upload-btn">SELECT FILE</button>
+            </div>
+
+            <div class="progress-container hidden" id="progress-container">
+                <div class="progress-header">
+                    <span>Processing...</span>
+                    <span id="progress-text">0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Total Alerts</div>
+                    <div class="stat-value" id="stat-total-alerts">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">High Severity</div>
+                    <div class="stat-value critical-text" id="stat-high-severity">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Frames Analyzed</div>
+                    <div class="stat-value" id="stat-frames">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Process Time</div>
+                    <div class="stat-value" id="stat-time">0s</div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- CENTER: VIDEO PLAYER -->
+        <section class="center-panel">
+            <div class="video-container" id="video-wrapper">
+                <video id="cctv-video" crossorigin="anonymous" playsinline></video>
+                <canvas id="overlay-canvas"></canvas>
+                <div class="placeholder-overlay" id="video-placeholder">
+                    <span>AWAITING VIDEO STREAM</span>
+                </div>
+            </div>
+
+            <div class="controls-bar">
+                <button class="btn-icon" id="play-pause-btn">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                </button>
+                <span class="time-display" id="video-time">00:00 / 00:00</span>
+                <select id="speed-selector" class="speed-select">
+                    <option value="0.5">0.5x</option>
+                    <option value="1" selected>1.0x</option>
+                    <option value="1.5">1.5x</option>
+                    <option value="2">2.0x</option>
+                </select>
+            </div>
+
+            <div class="timeline-container">
+                <input type="range" id="seek-bar" min="0" max="100" value="0" step="0.1">
+                <div id="timeline-markers" class="timeline-markers"></div>
+            </div>
+
+            <div class="jump-buttons" id="jump-buttons-container">
+                <!-- Buttons will be injected here -->
+            </div>
+        </section>
+
+        <!-- RIGHT PANEL: ALERTS -->
+        <aside class="sidebar-right">
+            <div class="alerts-header">
+                <h2>LIVE ALERTS <span class="badge" id="alert-badge">0</span></h2>
+            </div>
+
+            <div class="filter-tabs" id="filter-tabs">
+                <button class="filter-tab active" data-filter="ALL">ALL</button>
+                <button class="filter-tab" data-filter="CRITICAL">CRITICAL</button>
+                <button class="filter-tab" data-filter="HIGH">HIGH</button>
+                <button class="filter-tab" data-filter="MEDIUM">MEDIUM</button>
+                <button class="filter-tab" data-filter="LOW">LOW</button>
+            </div>
+
+            <div class="alert-feed" id="alert-feed">
+                <!-- Alert cards will be injected here -->
+            </div>
+        </aside>
+    </main>
+
+    <!-- JS -->
+    <script src="js/alertPanel.js"></script>
+    <script src="js/videoPlayer.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
